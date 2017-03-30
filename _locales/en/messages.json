@@ -1,0 +1,23 @@
+{
+    "extName": {
+        "message": "Ektajpu: Esperanto Text Converter",
+        "description": "name of the extension"
+    },
+    "extDescription": {
+        "message": "Converts the x-system characters into their proper Esperanto characters.",
+        "description": "description of the extension"
+    },
+    "homepageUrl": {
+        "message": "https://github.com/njensen0604/ektajpu",
+        "description": "url address for the extension"
+    },
+    "browserActionH1": {
+        "message": "Saluton to Ektajpu"
+    },
+    "browserActionDesc": {
+        "message": "This extension converts the x-system characters into the proper Esperanto characters."
+    },
+    "browserActionDevs": {
+        "message": "Program by Nicholas Jensen"
+    }
+}

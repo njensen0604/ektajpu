@@ -1,0 +1,20 @@
+{
+    "extName": {
+        "message": "Ektajpu: Konvertilo por Esperanta Teksto"
+    },
+    "extDescription": {
+        "message": "Ĉi tiu programeto konvertas la karakterojn de la x-sistemo en la ĝustajn Esperantajn karakterojn."
+    },
+    "homepageUrl": {
+        "message": "https://github.com/njensen0604/ektajpu"
+    },
+    "browserActionH1": {
+        "message": "Saluton al Ektajpu"
+    },
+    "browserActionDesc": {
+        "message": "Ĉi tiu programeto konvertas la karakterojn de la x-sistemo en la ĝustajn Esperantajn karakterojn."
+    },
+    "browserActionDevs": {
+        "message": "Kodo per Nicholas Jensen"
+    }
+}
