@@ -16,6 +16,8 @@ ux ⟶ ŭ
 
 Install it from the [Chrome Web Store](https://chrome.google.com/webstore/detail/ektajpu-esperanto-text-co/imcphpmkkohhbaipkceicfheidilofbo)
 
+Install it from the [Firefox Mozilla Add-on Store](https://addons.mozilla.org/addon/ektajpu-esperanto-converter/)
+
 ### Feature Requests ###
 
 If there are any features you would like to see in this extension (or another), please contact me.
