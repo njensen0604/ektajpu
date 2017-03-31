@@ -15,3 +15,7 @@ ux ⟶ ŭ
 ## Install ##
 
 Install it from the [Chrome Web Store](https://chrome.google.com/webstore/detail/ektajpu-esperanto-text-co/imcphpmkkohhbaipkceicfheidilofbo)
+
+### Feature Requests ###
+
+If there are any features you would like to see in this extension (or another), please contact me.
