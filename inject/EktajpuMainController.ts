@@ -1,22 +1,55 @@
-var printIt = new EktajpuPrintIt("Welcome, Ektajpu loaded.");
+console.log("Welcome, Ektajpu loaded.");
 
-var isActive: boolean = false;
+// check the storage for keys
+window.onload = function () {
 
-// listen for keys
-window.onload = function() {
+    chrome.storage.sync.get("myKey", function (items) {
 
-    // object for checking input text
-    var checkInput = new EktajpuCheckInput();
-    checkInput.check();
+        if (typeof items === 'undefined') {
+            // console.log("- inital state: items === 'undefined'");
+        } else {
+            // console.log("- inital state: items !== 'undefined'");
 
-    document.addEventListener("keyup", function(e) {
+            if (typeof items.myKey === 'undefined') {
+                // console.log("- - inital state: items.myKey === 'undefined'");
+            } else {
 
-        if (isActive == false) {
-          isActive = true;
-          checkInput.check();
-          isActive = false;
-        }
+                // console.log("- - inital state: items.myKey !== 'undefined'");
+                // console.log("items.myKey.val: " + items.myKey.val);
+
+                if (items.myKey.val == "on") {
+                    ektajpuStartStop.start();
+                };
+                // if (items.myKey.val == "off") { };
+
+            };
+
+        };
 
     });
 
 }
+
+class EktajpuStartStop {
+
+    // object for checking input text
+    private checkInput = new EktajpuCheckInput();
+
+    start() {
+        console.log("Ektajpu started.");
+        this.checkInput.check();
+        document.addEventListener("keyup", ektajpuStartStop.elKeyUp);
+    }
+
+    stop() {
+        console.log("Ektajpu stopped.");
+        document.removeEventListener("keyup", ektajpuStartStop.elKeyUp);
+    }
+
+    elKeyUp() {
+        ektajpuStartStop.checkInput.check();
+    }
+
+}
+
+var ektajpuStartStop = new EktajpuStartStop();

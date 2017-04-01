@@ -19,5 +19,11 @@
     },
     "browserActionDevs": {
         "message": "Program by Nicholas Jensen"
+    },
+    "browserActionButtonActive": {
+        "message": "Activated"
+    },
+    "browserActionButtonInActive": {
+        "message": "Not Activated"
     }
 }

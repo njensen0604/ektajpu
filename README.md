@@ -18,6 +18,10 @@ Install it from the [Chrome Web Store](https://chrome.google.com/webstore/detail
 
 Install it from the [Firefox Mozilla Add-on Store](https://addons.mozilla.org/addon/ektajpu-esperanto-converter/)
 
+### Changes ###
+
+Read the CHANGELOG.md for a list of updates.
+
 ### Feature Requests ###
 
 If there are any features you would like to see in this extension (or another), please contact me.

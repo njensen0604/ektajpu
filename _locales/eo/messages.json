@@ -16,5 +16,11 @@
     },
     "browserActionDevs": {
         "message": "Kodo per Nicholas Jensen"
+    },
+    "browserActionButtonActive": {
+        "message": "Aktivigita"
+    },
+    "browserActionButtonInActive": {
+        "message": "Ne Aktivigita"
     }
 }
