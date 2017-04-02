@@ -1,15 +1,12 @@
 {
     "extName": {
-        "message": "Ektajpu: Esperanto Text Converter",
-        "description": "name of the extension"
+        "message": "Ektajpu: Esperanto Text Converter"
     },
     "extDescription": {
-        "message": "Converts the x-system characters into their proper Esperanto characters.",
-        "description": "description of the extension"
+        "message": "Converts the x-system characters into their proper Esperanto characters."
     },
     "homepageUrl": {
-        "message": "https://github.com/njensen0604/ektajpu",
-        "description": "url address for the extension"
+        "message": "https://github.com/njensen0604/ektajpu"
     },
     "browserActionH1": {
         "message": "Saluton to Ektajpu"
@@ -21,9 +18,12 @@
         "message": "Program by Nicholas Jensen"
     },
     "browserActionButtonActive": {
-        "message": "Activated"
+        "message": "ACTIVATED"
     },
     "browserActionButtonInActive": {
         "message": "Not Activated"
+    },
+    "browserActionExtraNote": {
+        "message": "Caveats: Because of the complexity of certain web pages, this extension will not always work. For example, this does not currently work in email or boxes with user-styling using JavaScript."
     }
 }

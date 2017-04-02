@@ -11,9 +11,16 @@ var EktajpuCheckInput = (function () {
         var qSelAllTa = document.querySelectorAll("textarea:focus");
         this.checkList(qSelAllTa);
     };
+    // check the list of elements found from the query
     EktajpuCheckInput.prototype.checkList = function (arrayToCheck) {
         // cycle through list of input elements
         for (var i = 0; i < arrayToCheck.length; i++) {
+            // skip if the element is a password input box
+            var theType = arrayToCheck[i].getAttribute("type");
+            if (theType !== null) {
+                if (theType.toLowerCase() == "password")
+                    continue;
+            }
             // check the sentence for special characters
             var checkSentenceResult = this.checkSentence(arrayToCheck[i].value);
             if (checkSentenceResult != null) {
@@ -27,6 +34,7 @@ var EktajpuCheckInput = (function () {
             }
         }
     };
+    // check text from box
     EktajpuCheckInput.prototype.checkSentence = function (sentence) {
         var numberOfChanges = 0;
         // cycle through string from input box

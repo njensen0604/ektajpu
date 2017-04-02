@@ -16,10 +16,17 @@ class EktajpuCheckInput {
 
     }
 
+    // check the list of elements found from the query
     private checkList(arrayToCheck: any) {
 
         // cycle through list of input elements
         for (let i = 0; i < arrayToCheck.length; i++) {
+
+            // skip if the element is a password input box
+            let theType = arrayToCheck[i].getAttribute("type");
+            if (theType !== null) {
+                if (theType.toLowerCase() == "password") continue;
+            }
 
             // check the sentence for special characters
             let checkSentenceResult = this.checkSentence(arrayToCheck[i].value);
@@ -41,6 +48,7 @@ class EktajpuCheckInput {
 
     }
 
+    // check text from box
     private checkSentence(sentence: string) {
 
         let numberOfChanges: number = 0;

@@ -18,7 +18,7 @@
 	<meta name="robots" content="index, follow">
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/style.css">
 
 </head>
 
@@ -27,7 +27,7 @@
 	<div id="ektajpuMainPopup">
 
 		<h1 data-localize="__MSG_browserActionH1__">Saluton !</h1>
-		<p data-localize="__MSG_browserActionDesc__">This extension converts the x-system characters into the proper Esperanto characters.</p>
+		<p id="ektajpuDescription" data-localize="__MSG_browserActionDesc__">This extension converts the x-system characters into the proper Esperanto characters.</p>
 		<ul>
 			<li>cx ⟶ ĉ</li>
 			<li>gx ⟶ ĝ</li>
@@ -44,8 +44,10 @@
 
 		<div id="ektajpuInActivateBox">
 			<img src="../icons/ic_cancel_white_48dp/web/ic_cancel_white_48dp_1x.png" id="ektajpuInActivateBoxImg" />
-			<button id="ektajpuInActivate" data-localize="__MSG_browserActionButtonActive__">active</button>
+			<button id="ektajpuInActivate" data-localize="__MSG_browserActionButtonInActive__">inactive</button>
 		</div>
+
+		<div id="ektajpuExtraNote" data-localize="__MSG_browserActionExtraNote__">...</div>
 		
 
 		<div id="footer" data-localize="__MSG_browserActionDevs__">Program by Nicholas Jensen</div>

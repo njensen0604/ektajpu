@@ -18,9 +18,12 @@
         "message": "Kodo per Nicholas Jensen"
     },
     "browserActionButtonActive": {
-        "message": "Aktivigita"
+        "message": "AKTIVIGITA"
     },
     "browserActionButtonInActive": {
         "message": "Ne Aktivigita"
+    },
+    "browserActionExtraNote": {
+        "message": "Averto: Pro la komplekseco de certaj retpaĝoj, ĉi tiu programeto ne ĉiam funkcias. Ekzemple, ĉi tio ne nuntempe funkcias en retpoŝto aŭ skatoloj kun uzanto-stiliganto uzante JavaScript."
     }
 }
