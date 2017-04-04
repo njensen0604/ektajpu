@@ -18,12 +18,12 @@
         "message": "Program by Nicholas Jensen"
     },
     "browserActionButtonActive": {
-        "message": "ACTIVATED"
+        "message": "Activated"
     },
     "browserActionButtonInActive": {
         "message": "Not Activated"
     },
     "browserActionExtraNote": {
-        "message": "Caveats: Because of the complexity of certain web pages, this extension will not always work. For example, this does not currently work in email or boxes with user-styling using JavaScript."
+        "message": "Caveat: Because of the complexity of certain web pages, this extension will not always work. For example, this does not currently work in email or boxes with user-styling using JavaScript."
     }
 }

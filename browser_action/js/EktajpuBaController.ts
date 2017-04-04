@@ -1,11 +1,14 @@
-
-
 // contact the content script with a message
-function contactContentScript(message:string) {
-    chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
-    var activeTab = tabs[0];
-    chrome.tabs.sendMessage(activeTab.id, {"message": message});
-   });
+function contactContentScript(message: string) {
+    chrome.tabs.query({
+        currentWindow: true,
+        active: true
+    }, function (tabs) {
+        var activeTab = tabs[0];
+        chrome.tabs.sendMessage(activeTab.id, {
+            "message": message
+        });
+    });
 }
 
 // the function that runs when the on button is clicked
@@ -73,9 +76,18 @@ class EktajpuStorage {
                     // console.log("items.myKey.val: " + items.myKey.val);
 
                     if (items.myKey.val == "on") {
+                        // console.log("- - items.myKey.val == on");
+
+                        // turn on event listeners for toggle button
                         activationListeners.toggleButtonActive();
+
+                        // tell content script to start
+                        // contactContentScript("start");
+
                     };
                     if (items.myKey.val == "off") {
+                        // console.log("- - items.myKey.val == off");
+                        // turn on event listeners for toggle button
                         activationListeners.toggleButtonInActive();
                     };
 
@@ -100,6 +112,7 @@ class ActivationKeys {
         };
         chrome.storage.sync.set(save, function () {});
 
+        // turn on event listeners for toggle button
         activationListeners.toggleButtonActive();
 
     }
