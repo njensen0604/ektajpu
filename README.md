@@ -18,6 +18,8 @@ Install it from the [Chrome Web Store](https://chrome.google.com/webstore/detail
 
 Install it from the [Firefox Mozilla Add-on Store](https://addons.mozilla.org/addon/ektajpu-esperanto-converter/)
 
+Install it from the [Opera Add-on Store](https://addons.opera.com/en/extensions/details/ektajpu-esperanto-text-converter/?display=en)
+
 ### Changes ###
 
 Read the CHANGELOG.md for a list of updates.
