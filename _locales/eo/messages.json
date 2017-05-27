@@ -15,7 +15,7 @@
         "message": "Ĉi tiu programeto konvertas la karakterojn de la x-sistemo en la ĝustajn Esperantajn karakterojn."
     },
     "browserActionDevs": {
-        "message": "Kodo per Nicholas Jensen"
+        "message": "Programo de Nicholas Jensen"
     },
     "browserActionButtonActive": {
         "message": "Aktivigita"
@@ -24,6 +24,6 @@
         "message": "Ne Aktivigita"
     },
     "browserActionExtraNote": {
-        "message": "Averto: Pro la komplekseco de certaj retpaĝoj, ĉi tiu programeto ne ĉiam funkcias. Ekzemple, ĉi tio ne nuntempe funkcias en retpoŝto aŭ skatoloj kun uzanto-stiliganto uzante JavaScript."
+        "message": "Averto: Pro la komplekseco de certaj retpaĝoj, ĉi tiu programeto ne ĉiam funkcias. Ekzemple, ĉi tio ne nuntempe funkcias en retpoŝto aŭ skatoloj kun propra stiligo per JavaScript."
     }
 }
