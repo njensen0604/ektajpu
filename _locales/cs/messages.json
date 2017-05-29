@@ -1,0 +1,29 @@
+{
+    "extName": {
+        "message": "Ektajpu: Převodník esperantského textu"
+    },
+    "extDescription": {
+        "message": "Převádí diakritická písmena psaná v tzv. \"x-systému\" na oficiální esperantská písmena s diakritikou."
+    },
+    "homepageUrl": {
+        "message": "https://github.com/njensen0604/ektajpu"
+    },
+    "browserActionH1": {
+        "message": "Saluton al Ektajpu"
+    },
+    "browserActionDesc": {
+        "message": "Toto rozšíření převádí diakritická písmena psaná v tzv. \"x-systému\" na oficiální esperantská písmena s diakritikou."
+    },
+    "browserActionDevs": {
+        "message": "Program od Nicholase Jensena"
+    },
+    "browserActionButtonActive": {
+        "message": "Aktivováno"
+    },
+    "browserActionButtonInActive": {
+        "message": "Neaktivováno"
+    },
+    "browserActionExtraNote": {
+        "message": "Upozornění: Kvůli složitosti některých webových stránek nebude toto rozšíření vždycky fungovat. Například, rozšíření zatím nefunguje v emailech nebo v políčkách se zvláštním stylováním pomocí JavaScriptu."
+    }
+}
