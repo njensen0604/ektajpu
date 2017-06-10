@@ -1,65 +1,75 @@
 console.log("Welcome, Ektajpu loaded.");
-// check the storage for keys
+/**
+ * Check the chrome sync storage for value.
+ */
 chrome.storage.sync.get("myKey", function (items) {
     if (typeof items === 'undefined') {
-        // console.log("- inital state: items === 'undefined'");
         activationKeys.setActivationKeyOn();
     }
     else {
-        // console.log("- inital state: items !== 'undefined'");
         if (typeof items.myKey === 'undefined') {
-            // console.log("- - inital state: items.myKey === 'undefined'");
             activationKeys.setActivationKeyOn();
         }
         else {
-            // console.log("- - inital state: items.myKey !== 'undefined'");
-            // console.log("items.myKey.val: " + items.myKey.val);
             if (items.myKey.val == "on") {
                 ektajpuStartStop.start();
             }
             ;
-            // if (items.myKey.val == "off") { };
         }
         ;
     }
     ;
 });
-// object that sets the storage key value
+/**
+ * Sets the chrome sync storage key value.
+ */
 var ActivationKeys = (function () {
     function ActivationKeys() {
     }
+    /**
+     * Sets the chrome sync storage key value.
+     */
     ActivationKeys.prototype.setActivationKeyOn = function () {
         var save = {};
         save["myKey"] = {
             'val': "on"
         };
         chrome.storage.sync.set(save, function () { });
-        // tell content script to start
         ektajpuStartStop.start();
     };
     return ActivationKeys;
 }());
+/**
+ * Toggles the listener for user typing.
+ */
 var EktajpuStartStop = (function () {
     function EktajpuStartStop() {
-        // object for checking input text
         this.checkInput = new EktajpuCheckInput();
     }
+    /**
+     * Starts the listener for user typing.
+     */
     EktajpuStartStop.prototype.start = function () {
         // console.log("EktajpuStartStop start");
         console.log("Ektajpu started.");
         this.checkInput.check();
         document.addEventListener("keyup", ektajpuStartStop.elKeyUp);
     };
+    /**
+     * Stops the listener for user typing.
+     */
     EktajpuStartStop.prototype.stop = function () {
         // console.log("EktajpuStartStop stop");
         console.log("Ektajpu stopped.");
         document.removeEventListener("keyup", ektajpuStartStop.elKeyUp);
     };
+    /**
+     * Runs a check on the text.
+     */
     EktajpuStartStop.prototype.elKeyUp = function () {
         ektajpuStartStop.checkInput.check();
     };
     return EktajpuStartStop;
 }());
-var ektajpuStartStop = new EktajpuStartStop();
-var activationKeys = new ActivationKeys();
+var ektajpuStartStop = new EktajpuStartStop(), activationKeys = new ActivationKeys();
 //# sourceMappingURL=EktajpuMainController.js.map

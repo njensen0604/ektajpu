@@ -1,56 +1,50 @@
 console.log("Welcome, Ektajpu loaded.");
 
-// check the storage for keys
+/**
+ * Check the chrome sync storage for value.
+ */
 chrome.storage.sync.get("myKey", function (items) {
-
     if (typeof items === 'undefined') {
-        // console.log("- inital state: items === 'undefined'");
         activationKeys.setActivationKeyOn();
     } else {
-        // console.log("- inital state: items !== 'undefined'");
-
         if (typeof items.myKey === 'undefined') {
-            // console.log("- - inital state: items.myKey === 'undefined'");
             activationKeys.setActivationKeyOn();
         } else {
-
-            // console.log("- - inital state: items.myKey !== 'undefined'");
-            // console.log("items.myKey.val: " + items.myKey.val);
-
             if (items.myKey.val == "on") {
                 ektajpuStartStop.start();
             };
-            // if (items.myKey.val == "off") { };
-
         };
-
     };
-
 });
 
-// object that sets the storage key value
+/**
+ * Sets the chrome sync storage key value.
+ */
 class ActivationKeys {
 
+    /**
+     * Sets the chrome sync storage key value.
+     */
     setActivationKeyOn() {
-
         var save = {};
         save["myKey"] = {
             'val': "on"
         };
         chrome.storage.sync.set(save, function () {});
-
-        // tell content script to start
         ektajpuStartStop.start();
-
     }
-
 }
 
+/**
+ * Toggles the listener for user typing.
+ */
 class EktajpuStartStop {
 
-    // object for checking input text
     private checkInput = new EktajpuCheckInput();
 
+    /**
+     * Starts the listener for user typing.
+     */
     start() {
         // console.log("EktajpuStartStop start");
         console.log("Ektajpu started.");
@@ -58,18 +52,23 @@ class EktajpuStartStop {
         document.addEventListener("keyup", ektajpuStartStop.elKeyUp);
     }
 
+    /**
+     * Stops the listener for user typing.
+     */
     stop() {
         // console.log("EktajpuStartStop stop");
         console.log("Ektajpu stopped.");
         document.removeEventListener("keyup", ektajpuStartStop.elKeyUp);
     }
 
+    /**
+     * Runs a check on the text.
+     */
     elKeyUp() {
         ektajpuStartStop.checkInput.check();
     }
 
 }
 
-var ektajpuStartStop = new EktajpuStartStop();
-
-var activationKeys = new ActivationKeys();
+var ektajpuStartStop = new EktajpuStartStop(),
+    activationKeys = new ActivationKeys();

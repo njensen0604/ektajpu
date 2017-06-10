@@ -1,0 +1,16 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Your title: Nicholas Jensen
+    Site: https://github.com/njensen0604/ektajpu
+    Location: Sacramento, CA, USA
+
+# THANKS
+
+    Name: https://github.com/njensen0604
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5, jQuery, JavaScript
