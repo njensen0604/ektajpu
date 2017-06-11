@@ -20,7 +20,7 @@ function elEktajpuActivate() {
     contactContentScript("stop");
     activationListeners.toggleButtonInActive();
     document.querySelector("#ektajpuActivate").removeEventListener("click", elEktajpuActivate);
-    activationKeys.setActivationKeyOff();
+    activationKeysBrowserAction.setActivationKeyOff();
 }
 /**
  * Functionality that runs when the off-button is clicked.
@@ -29,7 +29,7 @@ function elEktajpuInActivate() {
     contactContentScript("start");
     activationListeners.toggleButtonActive();
     document.querySelector("#ektajpuInActivate").removeEventListener("click", elEktajpuInActivate);
-    activationKeys.setActivationKeyOn();
+    activationKeysBrowserAction.setActivationKeyOn();
 }
 /**
  * Handles the buttons' actions.
@@ -67,11 +67,11 @@ var EktajpuStorage = (function () {
     EktajpuStorage.prototype.checkInitialState = function () {
         chrome.storage.sync.get("myKey", function (items) {
             if (typeof items === 'undefined') {
-                activationKeys.setActivationKeyOn();
+                activationKeysBrowserAction.setActivationKeyOn();
             }
             else {
                 if (typeof items.myKey === 'undefined') {
-                    activationKeys.setActivationKeyOn();
+                    activationKeysBrowserAction.setActivationKeyOn();
                 }
                 else {
                     if (items.myKey.val == "on") {
@@ -94,13 +94,13 @@ var EktajpuStorage = (function () {
  * This stores whether the functionality is on or off,
  * in the chrome sync storage.
  */
-var ActivationKeys = (function () {
-    function ActivationKeys() {
+var ActivationKeysBrowserAction = (function () {
+    function ActivationKeysBrowserAction() {
     }
     /**
      * Sets to on in the chrome sync storage.
      */
-    ActivationKeys.prototype.setActivationKeyOn = function () {
+    ActivationKeysBrowserAction.prototype.setActivationKeyOn = function () {
         var save = {};
         save["myKey"] = {
             'val': "on"
@@ -112,7 +112,7 @@ var ActivationKeys = (function () {
     /**
      * Sets to off in the chrome sync storage.
      */
-    ActivationKeys.prototype.setActivationKeyOff = function () {
+    ActivationKeysBrowserAction.prototype.setActivationKeyOff = function () {
         var save = {};
         save["myKey"] = {
             'val': "off"
@@ -120,10 +120,10 @@ var ActivationKeys = (function () {
         chrome.storage.sync.set(save, function () { });
         activationListeners.toggleButtonInActive();
     };
-    return ActivationKeys;
+    return ActivationKeysBrowserAction;
 }());
 // object that toggles the variale in storage
-var activationKeys = new ActivationKeys();
+var activationKeysBrowserAction = new ActivationKeysBrowserAction();
 // object that works with the button listeners
 var activationListeners = new ActivationListeners();
 // check storage and activate buttons

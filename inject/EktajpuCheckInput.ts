@@ -1,3 +1,7 @@
+/**
+ * Finds the element with focus.
+ * Checks the text for character conversions.
+ */
 class EktajpuCheckInput {
 
     private charactersConvertFrom: string[] = ["CX", "Cx", "cx", "GX", "Gx", "gx", "HX", "Hx", "hx", "JX", "Jx", "jx", "SX", "Sx", "sx", "UX", "Ux", "ux"];
@@ -12,6 +16,10 @@ class EktajpuCheckInput {
             qSelAll = document.querySelectorAll("textarea:focus");
             if (qSelAll.length < 1) {
                 qSelAll = document.querySelectorAll('[contenteditable="true"]:focus');
+                if (qSelAll.length < 1)
+                    qSelAll = document.querySelectorAll('[contenteditable=true]:focus');
+                if (qSelAll.length < 1)
+                    qSelAll = document.querySelectorAll('[contenteditable]:focus');
             }
         }
         if (qSelAll.length > 0) {
@@ -20,54 +28,76 @@ class EktajpuCheckInput {
     }
 
     /**
-     * Checks the list of HTML elements for TEXTAREA, INPUT, and contenteditable.
-     * @param arrayToCheck List of items returned from a query select.
+     * Checks the list of HTML elements for type: TEXTAREA, INPUT, and contenteditable.
+     * @param {NodeList} arrayToCheck List of items returned from a query select.
      */
-    private checkList(arrayToCheck: any) {
+    private checkList(arrayToCheck: NodeList) {
 
         // cycle through list of input elements
         for (let i = 0; i < arrayToCheck.length; i++) {
 
-            // skip if the element is a password input box
-            let theType = arrayToCheck[i].getAttribute("type");
+            // get single element
+            let elem: Element = < Element > arrayToCheck[i];
+
+            // skip if the element is a password
+            let theType = elem.getAttribute("type");
             if (theType !== null) {
                 if (theType.toLowerCase() == "password") continue;
             }
 
             // check the sentence for special characters
-            let checkSentenceResult;
-            if (arrayToCheck[i].tagName == "TEXTAREA" || arrayToCheck[i].tagName == "INPUT")
-                checkSentenceResult = this.checkSentence(arrayToCheck[i].value);
-            if (arrayToCheck[i].tagName == "DIV")
-                checkSentenceResult = this.checkSentence(arrayToCheck[i].innerHTML);
-
-            if (checkSentenceResult != null) {
-
-                // get the cursor pos
-                let oldPos;
-                let diff;
-                if (arrayToCheck[i].tagName == "TEXTAREA" || arrayToCheck[i].tagName == "INPUT") {
-                    oldPos = arrayToCheck[i].selectionStart;
-                    diff = oldPos - (arrayToCheck[i].value.length - checkSentenceResult.length);
+            let sentenceLengthOrig: number;
+            let sentenceLengthDiff: number;
+            let checkSentenceResult: string;
+            if (elem.tagName == "TEXTAREA" || elem.tagName == "INPUT") {
+                sentenceLengthOrig = ( < HTMLInputElement > elem).value.length;
+                if (sentenceLengthOrig > 0) {
+                    checkSentenceResult = this.checkSentence(( < HTMLInputElement > elem).value);
                 }
-                // if (arrayToCheck[i].tagName == "DIV") {
-                //     oldPos = this.getCurorPositionWithin(arrayToCheck[i]);
-                //     diff = oldPos - (arrayToCheck[i].innerHTML.length - checkSentenceResult.length);
-                // }
+            }
+            // if (elem.tagName == "DIV") {
+            //     sentenceLengthOrig = elem.innerHTML.length;
+            //     if (sentenceLengthOrig > 0) {
+            //         checkSentenceResult = this.checkSentence(elem.innerHTML);
+            //     }
+            // }
 
-                // update text in gui
-                if (arrayToCheck[i].tagName == "TEXTAREA" || arrayToCheck[i].tagName == "INPUT")
-                    arrayToCheck[i].value = checkSentenceResult;
-                if (arrayToCheck[i].tagName == "DIV")
-                    arrayToCheck[i].innerHTML = checkSentenceResult;
+            if (checkSentenceResult !== undefined) {
 
-                // set the cursor pos
-                if (arrayToCheck[i].tagName == "TEXTAREA" || arrayToCheck[i].tagName == "INPUT") {
-                    arrayToCheck[i].setSelectionRange(diff, diff);
+                // get the length difference between the new and old text
+                sentenceLengthDiff = (sentenceLengthOrig - checkSentenceResult.length);
+
+                if (sentenceLengthDiff > 0) {
+
+                    // get the cursor pos
+                    let manageCursor = new EktajpuManageCursor();
+
+                    // set the cursor pos
+                    if (elem.tagName == "TEXTAREA" || elem.tagName == "INPUT") {
+
+                        // get the new cursor position
+                        let newPos: number = manageCursor.getPosition(elem) - sentenceLengthDiff;
+
+                        // update the gui
+                        ( < HTMLInputElement > elem).value = checkSentenceResult;
+
+                        // set the cursor at new position
+                        manageCursor.setPosition(elem, newPos);
+
+                    } else if (elem.tagName == "DIV") {
+
+                        // // get the new cursor position
+                        // let newPos: number = manageCursor.getPosition(elem) - sentenceLengthDiff;
+
+                        // // update the gui
+                        // // elem.innerHTML = checkSentenceResult;
+
+                        // // set the cursor at new position
+                        // manageCursor.setPosition(elem, newPos);
+
+                    }
+
                 }
-                // if (arrayToCheck[i].tagName == "DIV") {
-                //     this.set_mouse(arrayToCheck[i], diff);
-                // }
 
             }
 
@@ -75,64 +105,32 @@ class EktajpuCheckInput {
 
     }
 
-    // private getCurorPositionWithin(element) {
-    //     let caretOffset = 0;
-    //     if (typeof window.getSelection != "undefined") {
-    //         var range = window.getSelection().getRangeAt(0);
-    //         var preCaretRange = range.cloneRange();
-    //         preCaretRange.selectNodeContents(element);
-    //         preCaretRange.setEnd(range.endContainer, range.endOffset);
-    //         caretOffset = preCaretRange.toString().length;
-    //     } else if (typeof document.selection != "undefined" && document.selection.type != "Control") {
-    //         var textRange = document.selection.createRange();
-    //         var preCaretTextRange = document.body.createTextRange();
-    //         preCaretTextRange.moveToElementText(element);
-    //         preCaretTextRange.setEndPoint("EndToEnd", textRange);
-    //         caretOffset = preCaretTextRange.text.length;
-    //     }
-    //     return caretOffset;
-    // }
-
-    // private set_mouse(element, position: number) {
-
-    //     let el = element.childNodes[0];
-
-    //     var range = document.createRange();
-    //     var sel = window.getSelection();
-
-    //     range.setStart(el, position);
-    //     range.collapse(true);
-    //     sel.removeAllRanges();
-    //     sel.addRange(range);
-
-    // }
-
 
     /**
      * Checks text from HTML element.
-     * @param sentence String to convert.
-     * @return String Converted text.
+     * @param {string} sentence String to convert.
+     * @return {string} Converted text or original if nothing was changed.
      */
     private checkSentence(sentence: string) {
 
         let numberOfChanges: number = 0;
 
         // cycle through string from input box
-        let valTextOrig: string = sentence;
         let valTextNew: string = "";
         let posCharEnd: number = 0;
         let skip: boolean = false;
-        for (let pos = 0; pos < valTextOrig.length; pos++) {
+
+        for (let pos = 0; pos < sentence.length; pos++) {
             if (skip == true && pos <= posCharEnd) {
                 continue;
             } else {
                 skip = false;
             }
-            let valTextTemp = "";
+            let valTextTemp: string = "";
             // loop through character list
             for (let i = 0; i < this.charactersConvertFrom.length; i++) {
                 posCharEnd = (pos + this.charactersConvertFrom[i].length) - 1;
-                let charSet: string = valTextOrig.substr(pos, this.charactersConvertFrom[i].length);
+                let charSet: string = sentence.substr(pos, this.charactersConvertFrom[i].length);
                 if (charSet == this.charactersConvertFrom[i]) {
                     skip = true;
                     numberOfChanges++;
@@ -142,11 +140,13 @@ class EktajpuCheckInput {
             }
             if (skip == true) continue;
             // add char to new string
-            valTextNew += valTextOrig[pos];
+            valTextNew += sentence[pos];
         }
+
         // set new text on gui
         if (numberOfChanges > 0) {
             return valTextNew;
         }
+        return sentence;
     }
 }

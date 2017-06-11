@@ -21,7 +21,7 @@ function elEktajpuActivate() {
     contactContentScript("stop");
     activationListeners.toggleButtonInActive();
     document.querySelector("#ektajpuActivate").removeEventListener("click", elEktajpuActivate);
-    activationKeys.setActivationKeyOff();
+    activationKeysBrowserAction.setActivationKeyOff();
 }
 
 /**
@@ -31,7 +31,7 @@ function elEktajpuInActivate() {
     contactContentScript("start");
     activationListeners.toggleButtonActive();
     document.querySelector("#ektajpuInActivate").removeEventListener("click", elEktajpuInActivate);
-    activationKeys.setActivationKeyOn();
+    activationKeysBrowserAction.setActivationKeyOn();
 }
 
 /**
@@ -43,8 +43,8 @@ class ActivationListeners {
      * Enables functionality and alters buttons.
      */
     toggleButtonActive() {
-        document.querySelector("#ektajpuActivateBox").style.display = "block";
-        document.querySelector("#ektajpuInActivateBox").style.display = "none";
+        (<HTMLElement>document.querySelector("#ektajpuActivateBox")).style.display = "block";
+        (<HTMLElement>document.querySelector("#ektajpuInActivateBox")).style.display = "none";
         document.querySelector("#ektajpuActivate").addEventListener("click", elEktajpuActivate);
     }
 
@@ -52,9 +52,9 @@ class ActivationListeners {
      * Disables functionality and alters buttons.
      */
     toggleButtonInActive() {
-        document.querySelector("#ektajpuActivateBox").style.display = "none";
-        document.querySelector("#ektajpuInActivateBox").style.display = "block";
-        document.querySelector("#ektajpuInActivate").addEventListener("click", elEktajpuInActivate);
+        (<HTMLElement>document.querySelector("#ektajpuActivateBox")).style.display = "none";
+        (<HTMLElement>document.querySelector("#ektajpuInActivateBox")).style.display = "block";
+        (<HTMLElement>document.querySelector("#ektajpuInActivate")).addEventListener("click", elEktajpuInActivate);
     }
 }
 
@@ -69,10 +69,10 @@ class EktajpuStorage {
     checkInitialState() {
         chrome.storage.sync.get("myKey", function (items) {
             if (typeof items === 'undefined') {
-                activationKeys.setActivationKeyOn();
+                activationKeysBrowserAction.setActivationKeyOn();
             } else {
                 if (typeof items.myKey === 'undefined') {
-                    activationKeys.setActivationKeyOn();
+                    activationKeysBrowserAction.setActivationKeyOn();
                 } else {
                     if (items.myKey.val == "on") {
                         activationListeners.toggleButtonActive();
@@ -90,7 +90,7 @@ class EktajpuStorage {
  * This stores whether the functionality is on or off,
  * in the chrome sync storage.
  */
-class ActivationKeys {
+class ActivationKeysBrowserAction {
 
     /**
      * Sets to on in the chrome sync storage.
@@ -119,7 +119,7 @@ class ActivationKeys {
 }
 
 // object that toggles the variale in storage
-var activationKeys = new ActivationKeys();
+var activationKeysBrowserAction = new ActivationKeysBrowserAction();
 
 // object that works with the button listeners
 var activationListeners = new ActivationListeners();

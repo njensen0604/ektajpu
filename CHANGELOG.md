@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.1.0] - 2017-06-10
 ### Added
 - Added JSDocs to classes and methods.
+- Added new class to get / set cursor position.
 
 ## [0.1.2] - 2017-04-02
 ### Changed

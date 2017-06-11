@@ -33,7 +33,7 @@
       ],
       "run_at": "document_end",
       "js": [
-        "inject/EktajpuCheckInput.js", "inject/EktajpuMainController.js", "inject/EktajpuMessageWatch.js"
+        "inject/EktajpuCheckInput.js", "inject/EktajpuMainController.js", "inject/EktajpuManageCursor.js", "inject/EktajpuMessageWatch.js"
       ]
     }
   ]
