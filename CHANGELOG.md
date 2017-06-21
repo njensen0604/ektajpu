@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [0.1.0] - 2017-06-10
+## [0.2.0] - 2017-06-20
+### Added
+- Added support for 'contenteditable' div elements.
+
+## [0.1.3] - 2017-06-10
 ### Added
 - Added JSDocs to classes and methods.
 - Added new class to get / set cursor position.

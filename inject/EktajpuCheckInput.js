@@ -51,12 +51,12 @@ var EktajpuCheckInput = (function () {
                     checkSentenceResult = this.checkSentence(elem.value);
                 }
             }
-            // if (elem.tagName == "DIV") {
-            //     sentenceLengthOrig = elem.innerHTML.length;
-            //     if (sentenceLengthOrig > 0) {
-            //         checkSentenceResult = this.checkSentence(elem.innerHTML);
-            //     }
-            // }
+            if (elem.tagName == "DIV") {
+                sentenceLengthOrig = elem.innerHTML.length;
+                if (sentenceLengthOrig > 0) {
+                    checkSentenceResult = this.checkSentence(elem.innerHTML);
+                }
+            }
             if (checkSentenceResult !== undefined) {
                 // get the length difference between the new and old text
                 sentenceLengthDiff = (sentenceLengthOrig - checkSentenceResult.length);
@@ -73,12 +73,12 @@ var EktajpuCheckInput = (function () {
                         manageCursor.setPosition(elem, newPos);
                     }
                     else if (elem.tagName == "DIV") {
-                        // // get the new cursor position
-                        // let newPos: number = manageCursor.getPosition(elem) - sentenceLengthDiff;
-                        // // update the gui
-                        // // elem.innerHTML = checkSentenceResult;
-                        // // set the cursor at new position
-                        // manageCursor.setPosition(elem, newPos);
+                        // get the new cursor position
+                        var newPos = manageCursor.getPosition(elem) - sentenceLengthDiff;
+                        // update the gui
+                        elem.innerHTML = checkSentenceResult;
+                        // set the cursor at new position
+                        manageCursor.setPosition(elem, newPos);
                     }
                 }
             }

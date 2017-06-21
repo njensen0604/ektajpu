@@ -55,12 +55,12 @@ class EktajpuCheckInput {
                     checkSentenceResult = this.checkSentence(( < HTMLInputElement > elem).value);
                 }
             }
-            // if (elem.tagName == "DIV") {
-            //     sentenceLengthOrig = elem.innerHTML.length;
-            //     if (sentenceLengthOrig > 0) {
-            //         checkSentenceResult = this.checkSentence(elem.innerHTML);
-            //     }
-            // }
+            if (elem.tagName == "DIV") {
+                sentenceLengthOrig = elem.innerHTML.length;
+                if (sentenceLengthOrig > 0) {
+                    checkSentenceResult = this.checkSentence(elem.innerHTML);
+                }
+            }
 
             if (checkSentenceResult !== undefined) {
 
@@ -86,14 +86,14 @@ class EktajpuCheckInput {
 
                     } else if (elem.tagName == "DIV") {
 
-                        // // get the new cursor position
-                        // let newPos: number = manageCursor.getPosition(elem) - sentenceLengthDiff;
+                        // get the new cursor position
+                        let newPos: number = manageCursor.getPosition(elem) - sentenceLengthDiff;
 
-                        // // update the gui
-                        // // elem.innerHTML = checkSentenceResult;
+                        // update the gui
+                        elem.innerHTML = checkSentenceResult;
 
-                        // // set the cursor at new position
-                        // manageCursor.setPosition(elem, newPos);
+                        // set the cursor at new position
+                        manageCursor.setPosition(elem, newPos);
 
                     }
 

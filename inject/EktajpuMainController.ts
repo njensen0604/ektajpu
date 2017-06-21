@@ -46,7 +46,6 @@ class EktajpuStartStop {
      * Starts the listener for user typing.
      */
     start() {
-        // console.log("EktajpuStartStop start");
         console.log("Ektajpu started.");
         this.checkInput.check();
         document.addEventListener("keyup", ektajpuStartStop.elKeyUp);
@@ -56,7 +55,6 @@ class EktajpuStartStop {
      * Stops the listener for user typing.
      */
     stop() {
-        // console.log("EktajpuStartStop stop");
         console.log("Ektajpu stopped.");
         document.removeEventListener("keyup", ektajpuStartStop.elKeyUp);
     }

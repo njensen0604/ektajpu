@@ -50,7 +50,6 @@ var EktajpuStartStop = (function () {
      * Starts the listener for user typing.
      */
     EktajpuStartStop.prototype.start = function () {
-        // console.log("EktajpuStartStop start");
         console.log("Ektajpu started.");
         this.checkInput.check();
         document.addEventListener("keyup", ektajpuStartStop.elKeyUp);
@@ -59,7 +58,6 @@ var EktajpuStartStop = (function () {
      * Stops the listener for user typing.
      */
     EktajpuStartStop.prototype.stop = function () {
-        // console.log("EktajpuStartStop stop");
         console.log("Ektajpu stopped.");
         document.removeEventListener("keyup", ektajpuStartStop.elKeyUp);
     };

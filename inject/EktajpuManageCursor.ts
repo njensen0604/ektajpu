@@ -61,51 +61,58 @@ class EktajpuManageCursor {
                 ( < HTMLInputElement > htmlElement).setSelectionRange(newPosition, newPosition);
             }
 
-            // if (htmlElement.tagName == "DIV") {
-
-            //     console.log("setPosition - DIV 00 | newPosition: " + newPosition);
-
-            //     let childNodes = htmlElement.childNodes;
-            //     let txt = "";
-            //     let cursorCounterStart = 0;
-            //     let cursorCounterEnd = 0;
-            //     let cursorPositionAdjusted = 0;
-            //     let nodeCounter = 0;
-            //     for (let i = 0; i < childNodes.length; i++) {
-            //         // let size = 0;
-
-            //         console.log("childNodes[i].nodeName: " + childNodes[i].nodeName);
-            //         if (childNodes[i].nodeName === "#text") {
-            //             cursorCounterEnd = cursorCounterStart + ( < any > childNodes[i]).nodeValue.length;
-            //         } else if (childNodes[i].nodeName === "DIV") {
-            //             cursorCounterEnd = cursorCounterStart + ( < any > childNodes[i]).text.length;
-            //         } else {
-            //             cursorCounterEnd = cursorCounterStart +( < any > childNodes[i]).text.length;
-            //         }
-
-            //         if (newPosition >= cursorCounterStart && newPosition <= cursorCounterEnd) {
-            //             nodeCounter = i;
-            //             cursorPositionAdjusted = newPosition - cursorCounterStart;
-            //             break;
-            //         }
-
-            //         cursorCounterStart = cursorCounterEnd;
-
-            //     }
-
-            //     // code source: https://stackoverflow.com/questions/40632975/set-caret-position-in-a-content-editable-element
-            //     // var el = document.getElementsByTagName('div')[0];
-            //     var range = document.createRange();
-            //     var sel = window.getSelection();
-            //     range.setStart(htmlElement.childNodes[nodeCounter], cursorPositionAdjusted);
-            //     range.collapse(true);
-            //     sel.removeAllRanges();
-            //     sel.addRange(range);
-            //     ( < any > htmlElement).focus();
-
-            // }
+            if (htmlElement.tagName == "DIV") {
+                this.cycleThroughDiv(htmlElement, newPosition);
+            }
 
         }
+
+    }
+
+    /**
+     * Cycles through contenteditable div elements for text nodes.
+     * @param htmlElement div element to cycle through.
+     * @param newPosition The position to stop at.
+     */
+    private cycleThroughDiv(htmlElement: Element, newPosition: number) {
+
+        let charCount = 0;
+        let childNodes = htmlElement.childNodes;
+
+        // for each child node: div
+        for (let i = 0; i < childNodes.length; i++) {
+
+            if (childNodes[i].nodeName === "#text") {
+                charCount += ( < any > childNodes[i]).length;
+            } else {
+                newPosition = newPosition - charCount;
+                charCount = 0;
+                charCount += this.cycleThroughDiv( < Element > childNodes[i], newPosition);
+            }
+
+            if (charCount >= newPosition) {
+                this.setTheCursor( < Element > childNodes[i], (charCount - (charCount - newPosition)));
+                break;
+            }
+        }
+        return charCount;
+    }
+
+    /**
+     * This sets the cursor at a specific position in an editablecontent div.
+     * @param htmlElement div element to cycle through.
+     * @param newPosition The position to stop at.
+     */
+    private setTheCursor(htmlElement: Element, newPosition: number) {
+
+        // code source: https://stackoverflow.com/questions/40632975/set-caret-position-in-a-content-editable-element
+        // var el = document.getElementsByTagName('div')[0];
+        var range = document.createRange();
+        var sel = window.getSelection();
+        range.setStart(htmlElement, newPosition);
+        range.collapse(true);
+        sel.removeAllRanges();
+        sel.addRange(range);
 
     }
 
