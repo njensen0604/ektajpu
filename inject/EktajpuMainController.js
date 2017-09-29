@@ -14,11 +14,8 @@ chrome.storage.sync.get("myKey", function (items) {
             if (items.myKey.val == "on") {
                 ektajpuStartStop.start();
             }
-            ;
         }
-        ;
     }
-    ;
 });
 /**
  * Sets the chrome sync storage key value.
@@ -34,7 +31,8 @@ var ActivationKeys = (function () {
         save["myKey"] = {
             'val': "on"
         };
-        chrome.storage.sync.set(save, function () { });
+        chrome.storage.sync.set(save, function () {
+        });
         ektajpuStartStop.start();
     };
     return ActivationKeys;
@@ -70,4 +68,3 @@ var EktajpuStartStop = (function () {
     return EktajpuStartStop;
 }());
 var ektajpuStartStop = new EktajpuStartStop(), activationKeys = new ActivationKeys();
-//# sourceMappingURL=EktajpuMainController.js.map

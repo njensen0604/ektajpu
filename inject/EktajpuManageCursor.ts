@@ -87,11 +87,11 @@ class EktajpuManageCursor {
             } else {
                 newPosition = newPosition - charCount;
                 charCount = 0;
-                charCount += this.cycleThroughDiv( < Element > childNodes[i], newPosition);
+                charCount += this.cycleThroughDiv(< Element > childNodes[i], newPosition);
             }
 
             if (charCount >= newPosition) {
-                this.setTheCursor( < Element > childNodes[i], (charCount - (charCount - newPosition)));
+                this.setTheCursor(< Element > childNodes[i], (charCount - (charCount - newPosition)));
                 break;
             }
         }

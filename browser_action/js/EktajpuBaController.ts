@@ -46,6 +46,7 @@ class ActivationListeners {
         (<HTMLElement>document.querySelector("#ektajpuActivateBox")).style.display = "block";
         (<HTMLElement>document.querySelector("#ektajpuInActivateBox")).style.display = "none";
         document.querySelector("#ektajpuActivate").addEventListener("click", elEktajpuActivate);
+        chrome.browserAction.setBadgeText({text: ""});
     }
 
     /**
@@ -55,6 +56,7 @@ class ActivationListeners {
         (<HTMLElement>document.querySelector("#ektajpuActivateBox")).style.display = "none";
         (<HTMLElement>document.querySelector("#ektajpuInActivateBox")).style.display = "block";
         (<HTMLElement>document.querySelector("#ektajpuInActivate")).addEventListener("click", elEktajpuInActivate);
+        chrome.browserAction.setBadgeText({text: "X"});
     }
 }
 
@@ -76,12 +78,12 @@ class EktajpuStorage {
                 } else {
                     if (items.myKey.val == "on") {
                         activationListeners.toggleButtonActive();
-                    };
+                    }
                     if (items.myKey.val == "off") {
                         activationListeners.toggleButtonInActive();
-                    };
-                };
-            };
+                    }
+                }
+            }
         });
     }
 }
@@ -100,7 +102,8 @@ class ActivationKeysBrowserAction {
         save["myKey"] = {
             'val': "on"
         };
-        chrome.storage.sync.set(save, function () {});
+        chrome.storage.sync.set(save, function () {
+        });
         // turn on event listeners for toggle button
         activationListeners.toggleButtonActive();
     }
@@ -113,12 +116,13 @@ class ActivationKeysBrowserAction {
         save["myKey"] = {
             'val': "off"
         };
-        chrome.storage.sync.set(save, function () {});
+        chrome.storage.sync.set(save, function () {
+        });
         activationListeners.toggleButtonInActive();
     }
 }
 
-// object that toggles the variale in storage
+// object that toggles the variable in storage
 var activationKeysBrowserAction = new ActivationKeysBrowserAction();
 
 // object that works with the button listeners

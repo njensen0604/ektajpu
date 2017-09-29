@@ -9,4 +9,3 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         ektajpuStartStop.stop();
     }
 });
-//# sourceMappingURL=EktajpuMessageWatch.js.map

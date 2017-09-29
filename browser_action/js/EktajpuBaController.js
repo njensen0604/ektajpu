@@ -44,6 +44,7 @@ var ActivationListeners = (function () {
         document.querySelector("#ektajpuActivateBox").style.display = "block";
         document.querySelector("#ektajpuInActivateBox").style.display = "none";
         document.querySelector("#ektajpuActivate").addEventListener("click", elEktajpuActivate);
+        chrome.browserAction.setBadgeText({ text: "" });
     };
     /**
      * Disables functionality and alters buttons.
@@ -52,6 +53,7 @@ var ActivationListeners = (function () {
         document.querySelector("#ektajpuActivateBox").style.display = "none";
         document.querySelector("#ektajpuInActivateBox").style.display = "block";
         document.querySelector("#ektajpuInActivate").addEventListener("click", elEktajpuInActivate);
+        chrome.browserAction.setBadgeText({ text: "X" });
     };
     return ActivationListeners;
 }());
@@ -77,15 +79,11 @@ var EktajpuStorage = (function () {
                     if (items.myKey.val == "on") {
                         activationListeners.toggleButtonActive();
                     }
-                    ;
                     if (items.myKey.val == "off") {
                         activationListeners.toggleButtonInActive();
                     }
-                    ;
                 }
-                ;
             }
-            ;
         });
     };
     return EktajpuStorage;
@@ -105,7 +103,8 @@ var ActivationKeysBrowserAction = (function () {
         save["myKey"] = {
             'val': "on"
         };
-        chrome.storage.sync.set(save, function () { });
+        chrome.storage.sync.set(save, function () {
+        });
         // turn on event listeners for toggle button
         activationListeners.toggleButtonActive();
     };
@@ -117,12 +116,13 @@ var ActivationKeysBrowserAction = (function () {
         save["myKey"] = {
             'val': "off"
         };
-        chrome.storage.sync.set(save, function () { });
+        chrome.storage.sync.set(save, function () {
+        });
         activationListeners.toggleButtonInActive();
     };
     return ActivationKeysBrowserAction;
 }());
-// object that toggles the variale in storage
+// object that toggles the variable in storage
 var activationKeysBrowserAction = new ActivationKeysBrowserAction();
 // object that works with the button listeners
 var activationListeners = new ActivationListeners();
@@ -175,4 +175,3 @@ var LocalizeIt = (function () {
 // initialize the localization
 var localizeIt = new LocalizeIt();
 localizeIt.localizeHtmlPage();
-//# sourceMappingURL=EktajpuBaController.js.map

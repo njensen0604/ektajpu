@@ -12,9 +12,9 @@ chrome.storage.sync.get("myKey", function (items) {
         } else {
             if (items.myKey.val == "on") {
                 ektajpuStartStop.start();
-            };
-        };
-    };
+            }
+        }
+    }
 });
 
 /**
@@ -30,7 +30,8 @@ class ActivationKeys {
         save["myKey"] = {
             'val': "on"
         };
-        chrome.storage.sync.set(save, function () {});
+        chrome.storage.sync.set(save, function () {
+        });
         ektajpuStartStop.start();
     }
 }

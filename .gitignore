@@ -1,13 +1,21 @@
 
 # Created by https://www.gitignore.io/api/visualstudiocode
 
+### Intellij IDEA ###
+.idea/
+
 ### VisualStudioCode ###
-.vscode/*
+.vscode/
 
+### SonarLint ###
+.sonarlint/
+
+### TypeScript ###
 tsconfig.json
-
 *.map
 
+### Misc ###
 .eslintrc.json
+.DS_Store
 
 # End of https://www.gitignore.io/api/visualstudiocode

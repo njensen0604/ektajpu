@@ -9,7 +9,9 @@
 
 # THANKS
 
-    Name: https://github.com/njensen0604
+	Chinese Translator: Alan Ng
+	Linked In: https://www.linkedin.com/in/alan-ng-4325316b
+	Location: Los Angeles, CA
 
 # TECHNOLOGY COLOPHON
 
