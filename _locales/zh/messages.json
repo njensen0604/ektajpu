@@ -1,0 +1,29 @@
+{
+    "extName": {
+        "message": "Ektajpu: 世界語文轉換器"
+    },
+    "extDescription": {
+        "message": "將 x 系統字符轉換為正確的世界語符."
+    },
+    "homepageUrl": {
+        "message": "https://github.com/njensen0604/ektajpu"
+    },
+    "browserActionH1": {
+        "message": "歡迎來到 Ektajpu"
+    },
+    "browserActionDesc": {
+        "message": "此瀏覽擴展器將 x 系統字符轉換為適當的世界語字符."
+    },
+    "browserActionDevs": {
+        "message": "程序由Nicholas Jensen製作"
+    },
+    "browserActionButtonActive": {
+        "message": "啟用中"
+    },
+    "browserActionButtonInActive": {
+        "message": "關閉中"
+    },
+    "browserActionExtraNote": {
+        "message": "警告: 由於某些網頁的複雜性，此瀏覽擴展器可能不會正常運作。例如，目前在電子郵件或使用JavaScript的文字輸入視窗不會正常運作."
+    }
+}
