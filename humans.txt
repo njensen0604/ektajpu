@@ -5,14 +5,14 @@
 
     Your title: Nicholas Jensen
     Site: https://github.com/njensen0604/ektajpu
-	Linked In: https://www.linkedin.com/in/njensen0604/
+    Linked In: https://www.linkedin.com/in/njensen0604/
     Location: Sacramento, CA, USA
 
 # THANKS
 
-	Chinese Translator: Alan Ng
-	Linked In: https://www.linkedin.com/in/alan-ng-4325316b
-	Location: Los Angeles, CA
+    Chinese Translator: Alan Ng
+    Linked In: https://www.linkedin.com/in/alan-ng-4325316b
+    Location: Los Angeles, CA
 
 # TECHNOLOGY COLOPHON
 
