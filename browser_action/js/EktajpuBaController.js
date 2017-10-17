@@ -175,3 +175,4 @@ var LocalizeIt = (function () {
 // initialize the localization
 var localizeIt = new LocalizeIt();
 localizeIt.localizeHtmlPage();
+//# sourceMappingURL=EktajpuBaController.js.map

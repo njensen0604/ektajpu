@@ -1,22 +1,3 @@
-console.log("Welcome, Ektajpu loaded.");
-/**
- * Check the chrome sync storage for value.
- */
-chrome.storage.sync.get("myKey", function (items) {
-    if (typeof items === 'undefined') {
-        activationKeys.setActivationKeyOn();
-    }
-    else {
-        if (typeof items.myKey === 'undefined') {
-            activationKeys.setActivationKeyOn();
-        }
-        else {
-            if (items.myKey.val == "on") {
-                ektajpuStartStop.start();
-            }
-        }
-    }
-});
 /**
  * Sets the chrome sync storage key value.
  */
@@ -67,4 +48,29 @@ var EktajpuStartStop = (function () {
     };
     return EktajpuStartStop;
 }());
-var ektajpuStartStop = new EktajpuStartStop(), activationKeys = new ActivationKeys();
+// test for sites that are incompatible
+// Skipping Facebook
+if (!/^(?:(?:http|https):\/\/)?(?:www.)?facebook.com\/?/i.test(window.location.host)) {
+    console.log("naaj 1");
+    var ektajpuStartStop = new EktajpuStartStop(), activationKeys = new ActivationKeys();
+    console.log("Welcome, Ektajpu loaded.");
+    /**
+     * Check the chrome sync storage for value.
+     */
+    chrome.storage.sync.get("myKey", function (items) {
+        if (typeof items === 'undefined') {
+            activationKeys.setActivationKeyOn();
+        }
+        else {
+            if (typeof items.myKey === 'undefined') {
+                activationKeys.setActivationKeyOn();
+            }
+            else {
+                if (items.myKey.val == "on") {
+                    ektajpuStartStop.start();
+                }
+            }
+        }
+    });
+}
+//# sourceMappingURL=EktajpuMainController.js.map

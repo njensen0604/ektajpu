@@ -92,7 +92,7 @@ class EktajpuManageCursor {
 
             if (charCount >= newPosition) {
                 this.setTheCursor(< Element > childNodes[i], (charCount - (charCount - newPosition)));
-                break;
+                return 0;
             }
         }
         return charCount;

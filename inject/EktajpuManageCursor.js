@@ -78,7 +78,7 @@ var EktajpuManageCursor = (function () {
             }
             if (charCount >= newPosition) {
                 this.setTheCursor(childNodes[i], (charCount - (charCount - newPosition)));
-                break;
+                return 0;
             }
         }
         return charCount;
@@ -100,3 +100,4 @@ var EktajpuManageCursor = (function () {
     };
     return EktajpuManageCursor;
 }());
+//# sourceMappingURL=EktajpuManageCursor.js.map

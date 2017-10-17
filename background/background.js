@@ -7,7 +7,6 @@ chrome.extension.onMessage.addListener(
         sendResponse();
     });
 
-
 /**
  * Check the chrome sync storage for value.
  */
