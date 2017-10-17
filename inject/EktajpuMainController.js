@@ -51,7 +51,6 @@ var EktajpuStartStop = (function () {
 // test for sites that are incompatible
 // Skipping Facebook
 if (!/^(?:(?:http|https):\/\/)?(?:www.)?facebook.com\/?/i.test(window.location.host)) {
-    console.log("naaj 1");
     var ektajpuStartStop = new EktajpuStartStop(), activationKeys = new ActivationKeys();
     console.log("Welcome, Ektajpu loaded.");
     /**
