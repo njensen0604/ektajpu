@@ -57,6 +57,7 @@ class ActivationListeners {
         (<HTMLElement>document.querySelector("#ektajpuInActivateBox")).style.display = "block";
         (<HTMLElement>document.querySelector("#ektajpuInActivate")).addEventListener("click", elEktajpuInActivate);
         chrome.browserAction.setBadgeText({text: "X"});
+        chrome.browserAction.setBadgeBackgroundColor({color: "#00995c"});
     }
 }
 

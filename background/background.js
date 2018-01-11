@@ -22,7 +22,7 @@ chrome.storage.sync.get("myKey", function (items) {
             }
             if (items.myKey.val == "off") {
                 chrome.browserAction.setBadgeText({text: "X"});
-                chrome.browserAction.setBadgeBackgroundColor({color: "#ff4d4d"});
+                chrome.browserAction.setBadgeBackgroundColor({color: "#00995c"});
             }
         }
     }
