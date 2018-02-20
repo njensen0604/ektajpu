@@ -1,5 +1,7 @@
 # ektajpu #
 
+![Screenshot of App](img/branding/screenshot.png "Screenshot of App")
+
 This extension converts the x-system characters into their proper Esperanto characters.
 
 **This converts the characters live, as you type.**
