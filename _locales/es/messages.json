@@ -1,0 +1,29 @@
+{
+    "extName": {
+        "message": "Ektajpu: Convertidor de Texto en Esperanto"
+    },
+    "extDescription": {
+        "message": "Convierte los caracteres del sistema-x en sus propios caracteres en esperanto."
+    },
+    "homepageUrl": {
+        "message": "https://github.com/njensen0604/ektajpu"
+    },
+    "browserActionH1": {
+        "message": "Saluton a Ektajpu"
+    },
+    "browserActionDesc": {
+        "message": "Esta extensión convierte los caracteres del sistema-x en los caracteres de esperanto adecuados."
+    },
+    "browserActionDevs": {
+        "message": "Programa de Nicholas Jensen"
+    },
+    "browserActionButtonActive": {
+        "message": "Activada"
+    },
+    "browserActionButtonInActive": {
+        "message": "No Activada"
+    },
+    "browserActionExtraNote": {
+        "message": "Advertencia: debido a la complejidad de ciertas páginas web, esta extensión no siempre funcionará. Por ejemplo, esto no funciona actualmente en correos electrónicos o buzones con estilo de usuario que usa JavaScript."
+    }
+}
